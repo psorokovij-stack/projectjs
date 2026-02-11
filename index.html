@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Select | Автосалон</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="img/завантаження (4).jpg" alt="Logo" class="logo-img">
+            <span>Drive</span>Company
+        </div>
+        <nav>
+            <a href="#">Каталог</a>
+            <a href="#">Сервіс</a>
+            <a href="#">Контакти</a>
+        </nav>
+        <button id="cartBtn" class="btn cart-btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Знайди авто своєї<br><span>мрії</span> сьогодні</h1>
+            <p>Понад 500 преміальних автомобілів у наявності.</p>
+            <button class="btn">Записатись на тест-драйв</button>
+        </div>
+    </section>
+
+    <section class="store-controls">
+        <input type="text" id="searchBar" placeholder="Пошук за назвою..." oninput="filterCars()">
+        
+        <select id="sortOption" onchange="sortCars()">
+            <option value="default">Сортувати за</option>
+            <option value="priceLow">Ціна: від дешевих</option>
+            <option value="priceHigh">Ціна: від дорогих</option>
+            <option value="nameAZ">Назва: А-Я</option>
+        </select>
+    </section>
+
+    <section id="carGrid" class="grid-container">
+        
+        <div class="card" data-name="BMW M4 Coupe" data-price="85000">
+            <div class="card-controls">
+                <button class="delete-btn" onclick="this.closest('.card').remove()">✕</button>
+            </div>
+            <img src="img/BMW M4 Coupe.jpg" alt="BMW M4">
+            <h3>BMW M4 Coupe</h3>
+            <div class="price">$85,000</div>
+        </div>
+
+        <div class="card" data-name="Audi RS6 Avant" data-price="125000">
+            <div class="card-controls">
+                <button class="delete-btn" onclick="this.closest('.card').remove()">✕</button>
+            </div>
+            <img src="img/Audi RS6 Avan.jpg" alt="Audi RS6">
+            <h3>Audi RS6 Avant</h3>
+            <div class="price">$125,000</div>
+        </div>
+
+        <div class="card" data-name="Porsche 911 Carrera" data-price="150000">
+            <div class="card-controls">
+                <button class="delete-btn" onclick="this.closest('.card').remove()">✕</button>
+            </div>
+            <img src="img/Porsche 911 Carrera.jpg" alt="Porsche 911">
+            <h3>Porsche 911 Carrera</h3>
+            <div class="price">$150,000</div>
+        </div>
+<button id="addBtn" class="btn" onclick="openModal()">Додати авто</button>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2 id="modalTitle">Додати автомобіль</h2>
+        <input type="text" id="modalName" placeholder="Назва моделі">
+        <input type="number" id="modalPrice" placeholder="Ціна ($)">
+        <input type="text" id="modalImg" placeholder="Посилання на фото (URL)">
+        <div style="display:flex; gap:10px;">
+            <button class="btn" onclick="saveCar()">Зберегти</button>
+            <button class="btn" style="background:#64748b" onclick="closeModal()">Скасувати</button>
+        </div>
+    </div>
+</div>
+<!-- Панель корзини -->
+<div id="cartPanel" class="cart-panel" aria-hidden="true">
+    <h3>Кошик</h3>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+        <div>Всього: <span id="cartTotal">$0</span></div>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+            <button class="btn" onclick="checkout()">Оформити</button>
+            <button class="btn" style="background:#64748b" onclick="clearCart()">Очистити</button>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Drive Select</h4>
+                <p>Ваш надійний партнер у світі преміальних авто.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Контакти</h4>
+                <p>Київ, вул. Автомобільна, 1</p>
+                <p>+380 44 123 45 67</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <small>© <span id="footerYear"></span> Drive Select — Усі права захищено</small>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
